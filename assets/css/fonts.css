@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'TTCommons-Regular';
+    src: url('/public/fonts/TTCommons-Regular.woff2') format('woff2'),
+    url('/public/fonts/TTCommons-Regular.woff') format('woff'),
+    url('/public/fonts/TTCommons-Regular.ttf') format('truetype'),
+    url('/public/fonts/TTCommons-Regular.eot');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: 'TTCommons-Regular', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
