@@ -20,6 +20,8 @@ const { data: post, pending, error } = await useFetch<Post>(
     <main class="container">
         <div v-if="pending">Загрузка...</div>
         <article v-else-if="post" class="post-detail">
+            <h1 class="post-title">{{ post.title }}</h1>
+
             <div class="post-image">
                 <img src="https://picsum.photos/1220/700" :alt="post.title" />
             </div>
@@ -28,7 +30,6 @@ const { data: post, pending, error } = await useFetch<Post>(
                 {{ new Date(post.createdAt).toLocaleDateString() }}
             </time>
 
-            <h1 class="post-title">{{ post.title }}</h1>
 
             <div class="post-description">
                 {{ post.description }}
@@ -47,12 +48,12 @@ const { data: post, pending, error } = await useFetch<Post>(
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 80px;
 }
 
 .post-image img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
     object-fit: cover;
 }
 
@@ -62,10 +63,10 @@ const { data: post, pending, error } = await useFetch<Post>(
 }
 
 .post-title {
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 84px;
     margin: 0;
-    line-height: 1.3;
+    line-height: 1;
+    color: #101010;
 }
 
 .post-description {

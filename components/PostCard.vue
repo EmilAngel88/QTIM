@@ -16,7 +16,10 @@ defineProps<{
 <template>
     <article class="post-card">
         <div class="post-image">
-            <img src="https://picsum.photos/640/480" :alt="post.title" />
+            <img
+                src="https://picsum.photos/640/480"
+                :alt="post.title"
+            />
         </div>
 
         <div>
@@ -24,13 +27,18 @@ defineProps<{
                 {{ new Date(post.createdAt).toLocaleDateString() }}
             </time>
 
-            <h2 class="post-title">{{ post.title }}</h2>
+            <h2 class="post-title">
+                {{ post.title }}
+            </h2>
 
             <p class="post-preview">
                 {{ post.preview }}
             </p>
 
-            <NuxtLink :to="`/posts/${post.id}`" class="post-link">
+            <NuxtLink
+                :to="`/posts/${post.id}`"
+                class="post-link"
+            >
                 Читать дальше →
             </NuxtLink>
         </div>

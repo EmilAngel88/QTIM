@@ -16,8 +16,13 @@ interface Post {
 const route = useRoute()
 const router = useRouter()
 
-const { data: posts, pending, error } = await useFetch<Post[]>(
-    'https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts'
+const { data: posts, pending } = await useFetch<Post[]>(
+    'https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts',
+    {
+        key: () => `posts-page-${route.query.page || 1}`,
+        lazy: true,
+        cache: 'no-cache'
+    }
 )
 
 const perPage = 8
@@ -61,9 +66,15 @@ watch(
 
 <template>
     <main class="container">
-        <div v-if="pending">Загрузка...</div>
+        <div v-if="pending">
+            Загрузка...
+        </div>
+
         <div v-else>
-            <h1 class="posts-title">Articles</h1>
+            <h1 class="posts-title">
+                Articles
+            </h1>
+
             <div class="posts-list">
                 <NuxtLink
                     v-for="post in paginatedPosts"
@@ -81,6 +92,7 @@ watch(
                     :disabled="currentPage === 1"
                     @click="prevPage"
                 />
+
                 <PaginationButton
                     v-for="n in totalPages"
                     :key="n"
@@ -88,6 +100,7 @@ watch(
                     :isActive="n === currentPage"
                     @click="goToPage(n)"
                 />
+
                 <PaginationButton
                     direction="next"
                     :disabled="currentPage === totalPages"
